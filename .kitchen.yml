@@ -1,0 +1,24 @@
+---
+driver:
+  name: terraform
+  root_module_directory: examples
+  variable_files:
+    - examples/variables/us-east-1-test.tfvars
+
+provisioner:
+  name: terraform
+  root_module_directory: examples
+  variable_files:
+    - examples/variables/us-east-1-test.tfvars
+
+platforms:
+  - name: aws
+
+verifier:
+  name: awspec
+
+suites:
+- name: default
+  verifier:
+    patterns:
+    - ./**/*spec.rb
